@@ -1,0 +1,64 @@
+{% extends 'contacts/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-md-8">
+<div class="card">
+<div class="card-header">
+<h2>Détail du contact</h2>
+</div>
+<div class="card-body">
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Nom :</div>
+<div class="col-md-9">{{ contact.nom }}</div>
+</div>
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Prénom :</div>
+<div class="col-md-9">{{ contact.prenom }}</div>
+</div>
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Email :</div>
+<div class="col-md-9">{{ contact.email|default:"Non renseigné"
+}}</div>
+</div>
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Téléphone :</div>
+<div class="col-md-9">{{ contact.telephone|default:"Non
+renseigné" }}</div>
+</div>
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Adresse :</div>
+<div class="col-md-9">{{ contact.adresse|default:"Non
+renseignée"|linebreaks }}</div>
+</div>
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Date de création :</div>
+<div class="col-md-9">{{ contact.date_creation|date:"d/m/Y à
+H:i" }}</div>
+</div>
+<div class="row mb-3">
+<div class="col-md-3 fw-bold">Dernière modification :</div>
+<div class="col-md-9">{{ contact.date_modification|date:"d/m/Y
+à H:i" }}</div>
+</div>
+</div>
+<div class="card-footer">
+<div class="d-flex justify-content-between">
+<a href="{% url 'contacts:list' %}" class="btn btn-secondary">
+← Retour à la liste
+</a>
+<div>
+<a href="{% url 'contacts:edit' contact.pk %}" class="btn
+btn-warning">
+✏ Modifier
+</a>
+<a href="{% url 'contacts:delete' contact.pk %}"
+class="btn btn-danger">
+� Supprimer
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
